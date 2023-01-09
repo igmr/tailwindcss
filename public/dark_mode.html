@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/styles.css" rel="stylesheet"/>
+        <title>TailwindCss - Dark Mode</title>
+    </head>
+    <body class="container mx-auto bg-gray-200 dark:bg-slate-800">
+        <div class="w-full h-screen flex flex-col items-center justify-center gap-4">
+            <h1 class="text-5xl font-semibold tracking-wider text-slate-800 dark:text-gray-200">Modo Obscuro</h1>
+            <button id="btnDark"
+                class="rounded-xl p-2 bg-slate-800 dark:bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-16 h-16 block dark:hidden stroke-gray-200">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-16 h-16 hidden dark:block stroke-yellow-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+            </button>
+        </div>
+        <script>
+            const btnDark = document.querySelector('#btnDark')
+            btnDark.addEventListener('click', dark_mode)
+            function dark_mode()
+            {
+                localStorage.theme = localStorage.theme === 'dark' ? 'light' : 'dark'
+                //console.log(localStorage)
+                if(localStorage.theme === 'dark')
+                    document.documentElement.classList.add('dark')
+                else
+                    document.documentElement.classList.remove('dark')
+            }
+            function load()
+            {
+                if(localStorage.theme === 'dark')
+                    document.documentElement.classList.add('dark')
+                else
+                    document.documentElement.classList.remove('dark')
+
+                localStorage.theme = localStorage.theme ==='dark' ? 'dark' : 'light'
+                //console.log(localStorage)
+            }
+            (function ()
+            {
+                load()
+            })()
+        </script>
+    </body>
+</html>
